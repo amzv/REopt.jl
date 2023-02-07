@@ -65,7 +65,7 @@ else  # run HiGHS tests
         model = Model(optimizer_with_attributes(HiGHS.Optimizer, 
             "output_flag" => false, "log_to_console" => false)
         )
-        data = JSON.parsefile("./scenarios/monthly_rate.json")
+        data = JSON.parsefile("c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/monthly_rate.json")
 
         # create wholesale_rate with compensation in January > retail rate
         jan_rate = data["ElectricTariff"]["monthly_energy_rates"][1]
@@ -86,7 +86,7 @@ else  # run HiGHS tests
         model = Model(optimizer_with_attributes(HiGHS.Optimizer, 
             "output_flag" => false, "log_to_console" => false)
         )
-        results = run_reopt(model, "./scenarios/no_techs.json")
+        results = run_reopt(model, "c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/no_techs.json")
         @test results["ElectricTariff"]["year_one_energy_cost_before_tax"] ≈ 1000.0
         @test results["ElectricTariff"]["year_one_demand_cost_before_tax"] ≈ 136.99
     end
@@ -95,7 +95,7 @@ else  # run HiGHS tests
         model = Model(optimizer_with_attributes(HiGHS.Optimizer, 
             "output_flag" => false, "log_to_console" => false)
         )
-        r = run_reopt(model, "./scenarios/pv_storage.json")
+        r = run_reopt(model, "c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/pv_storage.json")
 
         @test r["PV"]["size_kw"] ≈ 216.6667 atol=0.01
         @test r["Financial"]["lcc"] ≈ 1.240037e7 rtol=1e-5
@@ -107,11 +107,11 @@ else  # run HiGHS tests
         model = Model(optimizer_with_attributes(HiGHS.Optimizer, 
             "output_flag" => false, "log_to_console" => false)
         )
-        results = run_reopt(model, "./scenarios/generator.json")
+        results = run_reopt(model, "c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/generator.json")
         @test results["Generator"]["size_kw"] ≈ 8.13 atol=0.01
         @test (sum(results["Generator"]["electric_to_load_series_kw"][i] for i in 1:9) + 
             sum(results["Generator"]["electric_to_load_series_kw"][i] for i in 13:8760)) == 0
-        p = REoptInputs("./scenarios/generator.json")
+        p = REoptInputs("c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/generator.json")
         simresults = simulate_outages(results, p)
         @test simresults["resilience_hours_max"] == 11
     end
@@ -121,7 +121,7 @@ else  # run HiGHS tests
         model = Model(optimizer_with_attributes(HiGHS.Optimizer, 
             "output_flag" => false, "log_to_console" => false)
         )
-        r = run_mpc(model, "./scenarios/mpc.json")
+        r = run_mpc(model, "c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/mpc.json")
         @test maximum(r["ElectricUtility"]["to_load_series_kw"][1:15]) <= 98.0 
         @test maximum(r["ElectricUtility"]["to_load_series_kw"][16:24]) <= 97.0
         @test sum(r["PV"]["to_grid_series_kw"]) ≈ 0
@@ -133,8 +133,8 @@ else  # run HiGHS tests
             "output_flag" => false, "log_to_console" => false)
         )
         ps = MPCInputs[]
-        push!(ps, MPCInputs("./scenarios/mpc_multinode1.json"));
-        push!(ps, MPCInputs("./scenarios/mpc_multinode2.json"));
+        push!(ps, MPCInputs("c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/mpc_multinode1.json"));
+        push!(ps, MPCInputs("c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/mpc_multinode2.json"));
         r = run_mpc(model, ps)
         @test r[1]["Costs"] ≈ r[2]["Costs"]
     end
@@ -149,12 +149,12 @@ else  # run HiGHS tests
         model = Model(optimizer_with_attributes(HiGHS.Optimizer, 
             "output_flag" => false, "log_to_console" => false)
         )
-        results = run_reopt(model, "./scenarios/incentives.json")
+        results = run_reopt(model, "c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/incentives.json")
         @test results["Financial"]["lcc"] ≈ 1.096852612e7 atol=1e4  
     end
 
     @testset "Fifteen minute load" begin
-        d = JSON.parsefile("scenarios/no_techs.json")
+        d = JSON.parsefile("c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/no_techs.json")
         d["ElectricLoad"] = Dict("loads_kw" => repeat([1.0], 35040))
         d["Settings"] = Dict("time_steps_per_hour" => 4)
         model = Model(optimizer_with_attributes(HiGHS.Optimizer, 
@@ -201,7 +201,7 @@ else  # run HiGHS tests
     @testset "PVspecs" begin
         ## Scenario 1: Palmdale, CA; array-type = 0 (Ground-mount)
         post_name = "pv.json" 
-        post = JSON.parsefile("./scenarios/$post_name")
+        post = JSON.parsefile("c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/$post_name")
         scen = Scenario(post)
      
         @test scen.pvs[1].tilt ≈ post["Site"]["latitude"] 
@@ -229,7 +229,7 @@ else  # run HiGHS tests
     end
 
     @testset "AlternativeFlatLoads" begin
-        input_data = JSON.parsefile("./scenarios/flatloads.json")
+        input_data = JSON.parsefile("c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/flatloads.json")
         s = Scenario(input_data)
         inputs = REoptInputs(s)
 
@@ -261,7 +261,7 @@ else  # run HiGHS tests
             single heating load instead of separated space heating and domestic hot water loads.
         
         """
-        input_data = JSON.parsefile("./scenarios/simulated_load.json")
+        input_data = JSON.parsefile("c://Users/amzv3/Documents/Github/REopt.jl/test/scenarios/simulated_load.json")
         
         input_data["ElectricLoad"] = Dict([("blended_doe_reference_names", ["Hospital", "FlatLoad_16_5"]),
                                         ("blended_doe_reference_percents", [0.2, 0.8])

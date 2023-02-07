@@ -27,5 +27,5 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 # *********************************************************************************nrel_developer_key = "X3Fd4msuCdRGpgelMSjr8FYXfgdjWSuHHMdZE8Ta"
-urdb_key = "2qt5uihpKXdywTj3uMIhBewxY9K4eNjpRje1JUPL"
-nrel_developer_key = "gAfosXcQ9Ldfw3qXqvKVb7PxMEkYigozmC9R3mXQ"
+urdb_key = "lDBBJ2ke82bnHPeSLGPN0A6eePIZ9i80MaSvOuSm"
+nrel_developer_key = "lDBBJ2ke82bnHPeSLGPN0A6eePIZ9i80MaSvOuSm"
