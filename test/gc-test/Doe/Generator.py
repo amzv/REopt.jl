@@ -6,24 +6,14 @@ import pandas as pd
 
 
 df = pd.read_csv('test\gc-test\Doe\DoE.csv')
-# print(df)
+print(df.head)
 
 path = "test\gc-test\Doe\DoE.xlsx" # "path_to_csv": str(row[17]),
 place = "56f071345457a351557112bc" #https://apps.openei.org/USURDB/rate/view/56f071345457a351557112bc
 
 for index, row in df.iterrows():
-    print(row[0],row[1], row[2])
-    print("\n")
-
 
     item_data = {}
-
-
-    item_data["PV"] = {
-        df.columns[0]:int(row[0]),
-        df.columns[1]:str(row[1]),
-        df.columns[2]:str(row[2])
-    }
 
     item_data["Site"] = {
         "longitude": str(row[0]),
@@ -40,8 +30,8 @@ for index, row in df.iterrows():
         "degradation_fraction": str(row[8]),
         "macrs_option_years": str(row[9]),
         "federal_itc_fraction": str(row[10]),
-        "module_type": str(row[11]),
-        "array_type": str(row[12]),
+        "module_type": str(row[11]), #standar : 0, premium : 1 , thin_film: 2
+        "array_type": str(row[12]), #fixed : 1, one_axis : 2, one_axis_one_track : 3
         "om_cost_per_kw": str(row[13]),
         "macrs_itc_reduction": str(row[14]),
         "azimuth": str(row[15]),
@@ -78,7 +68,7 @@ for index, row in df.iterrows():
 
     # temp.append(item_data)
 
-    var = f'case_{index+1}.json'
+    var = f'test\gc-test\Doe\Scenarios\case_{index+1}.json'
     print(var)
 
     with open (var, "w") as f:

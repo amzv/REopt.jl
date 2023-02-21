@@ -1,0 +1,57 @@
+{
+    "Site": {
+        "longitude": "67",
+        "latitude": "68",
+        "roof_squarefeet": "69",
+        "land_acres": "70",
+        "node": "71"
+    },
+    "PV": {
+        "macrs_bonus_fraction": "72",
+        "installed_cost_per_kw": "73",
+        "tilt": "74",
+        "degradation_fraction": "75",
+        "macrs_option_years": "76",
+        "federal_itc_fraction": "77",
+        "module_type": "78",
+        "array_type": "79",
+        "om_cost_per_kw": "80",
+        "macrs_itc_reduction": "81",
+        "azimuth": "82",
+        "federal_rebate_per_kw": "83"
+    },
+    "ElectricLoad": [
+        {
+            "path_to_csv": "test\\gc-test\\Doe\\DoE.xlsx",
+            "critical_load_fraction": "84",
+            "year": "85"
+        }
+    ],
+    "ElectricStorage": [
+        {
+            "total_rebate_per_kw": "86",
+            "macrs_option_years": "87",
+            "can_grid_charge": "88",
+            "macrs_bonus_fraction": "89",
+            "replace_cost_per_kw": "90",
+            "replace_cost_per_kwh": "91",
+            "installed_cost_per_kw": "92",
+            "installed_cost_per_kwh": "93",
+            "total_itc_fraction": "94",
+            "charge_efficiency": "95"
+        }
+    ],
+    "ElectricTariff": [
+        {
+            "urdb_label": "56f071345457a351557112bc"
+        }
+    ],
+    "Financial": {
+        "elec_cost_escalation_rate_fraction": "96",
+        "offtaker_discount_rate_fraction": "97",
+        "owner_discount_rate_fraction": "98",
+        "offtaker_tax_rate_fraction": "99",
+        "owner_tax_rate_fraction": "100",
+        "om_cost_escalation_rate_fraction": "101"
+    }
+}
