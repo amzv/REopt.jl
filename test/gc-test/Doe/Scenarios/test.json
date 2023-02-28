@@ -1,18 +1,18 @@
 {
     "Site": {
-        "longitude": -118.11646129999998,
-        "latitude": 34.5794343,
-        "roof_squarefeet": 4553,
+        "longitude": -74.5946915,
+        "latitude": 40.3444041,
+        "roof_squarefeet": 4500,
         "land_acres": 1,
         "node": 3
     },
     "PV": {
         "macrs_bonus_fraction": 0.4,
-        "installed_cost_per_kw": 1342,
-        "tilt": 34.579,
-        "degradation_fraction": 0.000738664,
+        "installed_cost_per_kw": 1500,
+        "tilt": 40.3444041,
+        "degradation_fraction": 0.002,
         "macrs_option_years": 5,
-        "federal_itc_fraction": 0.435660768,
+        "federal_itc_fraction": 0.3,
         "module_type": 0,
         "array_type": 1,
         "om_cost_per_kw": 16,
@@ -20,18 +20,18 @@
         "azimuth": 180,
         "federal_rebate_per_kw": 350
     },
-    "ElectricLoad": [
+    "ElectricLoad": 
         {
-            "path_to_csv": "test/gc-test/Doe/test_load.csv",
-            "critical_load_fraction": 0.3,
-            "year": "2017"
+            "path_to_csv": "C:/Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/test_load2.csv",
+            "critical_load_fraction": 0.01,
+            "year": 2017
         }
-    ],
-    "ElectricStorage": [
+    ,
+    "ElectricStorage": 
         {
             "total_rebate_per_kw": 100,
             "macrs_option_years": 5,
-            "can_grid_charge": false,
+            "can_grid_charge": true,
             "macrs_bonus_fraction": 0.4,
             "replace_cost_per_kw": 460,
             "replace_cost_per_kwh": 230,
@@ -40,17 +40,17 @@
             "total_itc_fraction": 0,
             "charge_efficiency": 0.98
         }
-    ],
-    "ElectricTariff": [
+    ,
+    "ElectricTariff": 
         {
             "urdb_label": "56f071345457a351557112bc"
         }
-    ],
+    ,
     "Financial": {
         "elec_cost_escalation_rate_fraction": 0.026000000000000002,
         "offtaker_discount_rate_fraction": 0.081,
         "owner_discount_rate_fraction": 0.081,
-        "offtaker_tax_rate_fraction": 20,
+        "offtaker_tax_rate_fraction": 0.4,
         "owner_tax_rate_fraction": 0.4,
         "om_cost_escalation_rate_fraction": 0.4
     }
