@@ -64,6 +64,9 @@ for index, row in df.iterrows():
         "offtaker_tax_rate_fraction": str(row[32]),
         "owner_tax_rate_fraction": str(row[33]),
         "om_cost_escalation_rate_fraction": str(row[34])
+    },
+    item_data["ElectricUtility"] = {
+        "outage_probabilities": str(row[35])  #::Array{R,1} where R<:Real = [1.0],
     }
 
     # temp.append(item_data)
@@ -73,3 +76,6 @@ for index, row in df.iterrows():
 
     with open (var, "w") as f:
         json.dump(item_data, f, indent=4)
+
+
+# for the outputs, we want to measure the unserved_load_per_outage The total unserved load in each outage.
