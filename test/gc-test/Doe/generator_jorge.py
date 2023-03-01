@@ -1,11 +1,12 @@
 import json
 import pandas as pd
+import numpy as np
 
 
 df = pd.read_csv('test/gc-test/Doe/test1.csv')
 print(df.head)
 
-path = "C:/Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/test_load2.csv" # "path_to_csv": str(row[17]),
+path = "C:/Users/jsolano8/Documents/Github/REopt.jl/test/gc-test/Doe/test_load2.csv" # "path_to_csv": str(row[17]),
 place = "56f071345457a351557112bc" #https://apps.openei.org/USURDB/rate/view/56f071345457a351557112bc
 
 for index, row in df.iterrows():
@@ -67,12 +68,12 @@ for index, row in df.iterrows():
         "owner_tax_rate_fraction": row[33],
         "om_cost_escalation_rate_fraction": row[34]
     }
-    item_data["ElectricUtility"] = {
-        "outage_probabilities": row[35]  #::Array{R,1} where R<:Real = [1.0],
-    }
+    #item_data["ElectricUtility"] = {
+    #    "outage_probabilities": [row[35],1],
+    #    "outage_durations": [row[36],row[36]],  #::Array{R,1} where R<:Real = [1.0],
+    #    "outage_time_steps": [row[37],row[38]]
+    #}
 
-
-    # temp.append(item_data)
 
     var = f'test\gc-test\Doe\Scenarios\case_{index+1}.json'
     print(var)

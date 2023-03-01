@@ -4,10 +4,10 @@ using HiGHS
 using JSON
 using REopt
 
-for i in 1:1
-    post_name = "test.json" 
+for i in 1:149
+    post_name = "case_$i.json" 
     #post_name = "pv_storage.json" 
-    post = JSON.parsefile("c://Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/Scenarios/$post_name")
+    post = JSON.parsefile("c://Users/jsolano8/Documents/GitHub/REopt.jl/test/gc-test/Doe/Scenarios/$post_name")
     model = Model(HiGHS.Optimizer)
     results = run_reopt(model, post)
     #storage = JSON.json(results["ElectricStorage"])
@@ -15,6 +15,8 @@ for i in 1:1
     #tariff = JSON.json(results["ElectricTariff"])
     #financial = JSON.json(results["Financial"])
     resdata = JSON.json(results)
+
+    #print(resdata)
 
 
     # write the file with the stringdata variable information
@@ -30,7 +32,7 @@ for i in 1:1
     #open("c://Users/amzv3/Documents/Github/REopt.jl/test/gc-test/scenarios/results/financialresults$i.json", "w") do f
     #    write(f, financial)
     #end
-    open("c://Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/run$i.json", "w") do f
+    open("C:/Users/jsolano8/Documents/GitHub/REopt.jl/test/gc-test/results/run_$i.json", "w") do f
         write(f, resdata)
     end
      
