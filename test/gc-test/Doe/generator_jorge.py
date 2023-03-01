@@ -6,11 +6,11 @@ import numpy as np
 df = pd.read_csv('test/gc-test/Doe/test1.csv')
 print(df.head)
 
-path = "C:/Users/jsolano8/Documents/Github/REopt.jl/test/gc-test/Doe/test_load2.csv" # "path_to_csv": str(row[17]),
 place = "56f071345457a351557112bc" #https://apps.openei.org/USURDB/rate/view/56f071345457a351557112bc
 
 for index, row in df.iterrows():
 
+    path = f"C:/Users/jsolano8/Documents/Github/REopt.jl/test/gc-test/Doe/test_load{index}.csv"
     item_data = {}
 
     if str(row[21]) == 'true':
@@ -58,7 +58,7 @@ for index, row in df.iterrows():
         "charge_efficiency": row[28] #origianl ref is 0.975**(1/2)*0.96
     }
     item_data["ElectricTariff"] = {
-        "urdb_label": place#updated value for princeton
+        "urdb_label": place #updated value for princeton
     }
     item_data["Financial"] =  {
         "elec_cost_escalation_rate_fraction": row[29],
