@@ -8,7 +8,7 @@ import pandas as pd
 df = pd.read_csv('test/gc-test/Doe/test1.csv')
 print(df.head)
 
-path = "test/gc-test/Doe/test_load.csv" # "path_to_csv": str(row[17]),
+path = "C:/Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/test_load2.csv" # "path_to_csv": str(row[17]),
 place = "56f071345457a351557112bc" #https://apps.openei.org/USURDB/rate/view/56f071345457a351557112bc
 
 for index, row in df.iterrows():
@@ -45,8 +45,8 @@ for index, row in df.iterrows():
     item_data["ElectricLoad"] = {
         "path_to_csv": path,
         "critical_load_fraction": row[18],
-        "year": str(row[17])
-    },
+        "year": row[17]
+    }
     item_data["ElectricStorage"] =  {
         "total_rebate_per_kw": row[19],
         "macrs_option_years": row[20],
@@ -58,10 +58,10 @@ for index, row in df.iterrows():
         "installed_cost_per_kwh": row[26],
         "total_itc_fraction": row[27],
         "charge_efficiency": row[28] #origianl ref is 0.975**(1/2)*0.96
-    },
+    }
     item_data["ElectricTariff"] = {
-        "urdb_label": str(place) #updated value for princeton
-    },
+        "urdb_label": place#updated value for princeton
+    }
     item_data["Financial"] =  {
         "elec_cost_escalation_rate_fraction": row[29],
         "offtaker_discount_rate_fraction": row[30],
@@ -71,10 +71,13 @@ for index, row in df.iterrows():
         "om_cost_escalation_rate_fraction": row[34]
     }
 
+
     # temp.append(item_data)
 
     var = f'test\gc-test\Doe\Scenarios\case_{index+1}.json'
     print(var)
 
+    jsondata=json.dumps(item_data, indent=4)
+
     with open (var, "w") as f:
-        json.dump(item_data, f, indent=4)
+        json.dump(item_data,f)
