@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 
-df = pd.read_csv('test/gc-test/Doe/test1.csv')
+df = pd.read_csv('test/gc-test/Doe/test316.csv')
 print(df.head)
 
 place = "56f071345457a351557112bc" #https://apps.openei.org/USURDB/rate/view/56f071345457a351557112bc
@@ -41,7 +41,9 @@ for index, row in df.iterrows():
         "federal_rebate_per_kw": row[16]
     }
     item_data["ElectricLoad"] = {
-        "path_to_csv": path,
+        # "path_to_csv": path,
+        "doe_reference_name": "LargeOffice",
+        "annual_kwh": 2890800,
         "critical_load_fraction": row[18],
         "year": row[17]
     }
