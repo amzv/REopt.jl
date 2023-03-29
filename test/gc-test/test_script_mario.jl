@@ -4,7 +4,7 @@ using HiGHS
 using JSON
 using REopt
 
-for i in 1:500
+for i in 1:1000
     post_name = "case_$i.json" 
     #post_name = "pv_storage.json" 
     post = JSON.parsefile("c://Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/Scenarios/$post_name")
@@ -30,7 +30,7 @@ for i in 1:500
     #open("c://Users/amzv3/Documents/Github/REopt.jl/test/gc-test/scenarios/results/financialresults$i.json", "w") do f
     #    write(f, financial)
     #end
-    open("c://Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/run_$i.json", "w") do f
+    open("c://Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/run_loads_$i.json", "w") do f
         write(f, resdata)
     end
      
