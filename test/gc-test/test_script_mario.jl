@@ -4,7 +4,7 @@ using HiGHS
 using JSON
 using REopt
 
-for i in 1:1000
+for i in 1:200
     post_name = "case_$i.json" 
     #post_name = "pv_storage.json" 
     post = JSON.parsefile("c://Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/Scenarios/$post_name")

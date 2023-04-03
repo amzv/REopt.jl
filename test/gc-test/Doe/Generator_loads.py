@@ -2,10 +2,10 @@ import json
 import pandas as pd
 
 
-df = pd.read_csv('test/gc-test/Doe/testload.csv')
+df = pd.read_csv('test/gc-test/Doe/testload2.csv')
 print(df.head)
 
-path = "C:/Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/test2.csv" # "path_to_csv": str(row[17]),
+path = "C:/Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/testload2.csv" # "path_to_csv": str(row[17]),
 place = "56f071345457a351557112bc" #https://apps.openei.org/USURDB/rate/view/56f071345457a351557112bc
 
 for index, row in df.iterrows():
