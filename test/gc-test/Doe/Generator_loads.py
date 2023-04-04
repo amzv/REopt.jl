@@ -1,3 +1,5 @@
+
+
 import json
 import pandas as pd
 
@@ -5,7 +7,7 @@ import pandas as pd
 df = pd.read_csv('test/gc-test/Doe/testload2.csv')
 print(df.head)
 
-path = "C:/Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/testload2.csv" # "path_to_csv": str(row[17]),
+path = "C:/Users/jsolano8/Documents/Github/REopt.jl/test/gc-test/Doe/testload2.csv" # "path_to_csv": str(row[17]),
 place = "56f071345457a351557112bc" #https://apps.openei.org/USURDB/rate/view/56f071345457a351557112bc
 
 for index, row in df.iterrows():
@@ -22,18 +24,18 @@ for index, row in df.iterrows():
         "latitude": row[1],
         "roof_squarefeet": row[2],
         "land_acres": row[3],
-        "node": row[4]
+        "node": int(row[4])
     }
 
     item_data["PV"] = {
-        "macrs_bonus_fraction": row[5], #Find out meaning
+        "macrs_bonus_fraction": float(0.4), #Find out meaning
         "installed_cost_per_kw": row[6],
         "tilt": row[7],
         "degradation_fraction": row[8],
-        "macrs_option_years": row[9],
-        "federal_itc_fraction": row[10],
-        "module_type": row[11], #standar : 0, premium : 1 , thin_film: 2
-        "array_type": row[12], #fixed : 1, one_axis : 2, one_axis_one_track : 3
+        "macrs_option_years": int(row[9]),
+        "federal_itc_fraction": int(row[10]),
+        "module_type": int(row[11]), #standar : 0, premium : 1 , thin_film: 2
+        "array_type": int(row[12]), #fixed : 1, one_axis : 2, one_axis_one_track : 3
         "om_cost_per_kw": row[13],
         "macrs_itc_reduction": row[14],
         "azimuth": row[15],
@@ -43,11 +45,11 @@ for index, row in df.iterrows():
         "annual_kwh": row[18],
         "doe_reference_name":"LargeOffice",
         "critical_load_fraction": 0.4,
-        "year": row[17]
+        "year": int(row[17])
     }
     item_data["ElectricStorage"] =  {
         "total_rebate_per_kw": row[19],
-        "macrs_option_years": row[20],
+        "macrs_option_years": int(row[20]),
         "can_grid_charge": grid,
         "macrs_bonus_fraction": row[22],
         "replace_cost_per_kw": row[23],

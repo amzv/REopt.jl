@@ -4,9 +4,9 @@ using HiGHS
 using JSON
 using REopt
 
-for i in 1:149
+for i in 1:200
     post_name = "case_$i.json" 
-    #post_name = "pv_storage.json" 
+    # post_name = "pv_storage.json" 
     post = JSON.parsefile("c://Users/jsolano8/Documents/GitHub/REopt.jl/test/gc-test/Doe/Scenarios/$post_name")
     model = Model(HiGHS.Optimizer)
     results = run_reopt(model, post)
