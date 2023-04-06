@@ -2,7 +2,7 @@ import json
 import pandas as pd
 
 
-df = pd.read_csv('test/gc-test/Doe/test3.csv')
+df = pd.read_csv('test/gc-test/Doe/DoE_Full_EdgeCases.csv')
 print(df.head)
 
 path = "C:/Users/amzv3/Documents/Github/REopt.jl/test/gc-test/Doe/test2.csv" # "path_to_csv": str(row[17]),
